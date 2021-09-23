@@ -12,16 +12,17 @@ describe('mood + weather tracking routes', () => {
         pool.end();
     });
 
-    // it('returns the current weather given a zipcode', () => {
-    //     const zipcode = 97203;
-
-    //     const weatherData = getWeather(zipcode);
-
-    //     expect(weatherData).toEqual({
-    //         'current-temperature': expect.any(Number),
-    //         'air-quality': expect.any(Number),
-    //         'weather-description': expect.any(String),
-    //         'observed-time': expect.any(String),
-    //     });
-    // });
+    it('returns the current weather given a zipcode', () => {
+        return request(app)
+            .get('/api/v1/moods/weather')
+            .send(97203)
+            .then((res) => {
+                expect(res.body).toEqual({
+                    'current-temperature': expect.any(Number),
+                    'air-quality': expect.any(Number),
+                    'weather-description': expect.any(String),
+                    'observed-time': expect.any(String),
+                });
+            });
+    });
 });
