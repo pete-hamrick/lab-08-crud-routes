@@ -116,12 +116,29 @@ describe('mood + weather tracking routes', () => {
 
     it('should PATCH a mood by id', () => {
         return request(app)
-            .patch('/api/v1/orders/2')
+            .patch('/api/v1/moods/2')
             .send({
                 mood: 'upset',
                 mood_explanation:
                     'It is wednesday, sunny, and I am in lab wishing I could get unstuck',
             })
+            .then((res) => {
+                expect(res.body).toEqual({
+                    id: '2',
+                    mood: 'upset',
+                    mood_explanation:
+                        'It is wednesday, sunny, and I am in lab wishing I could get unstuck',
+                    current_temperature: expect.any(Number),
+                    air_quality: expect.any(Number),
+                    weather_description: expect.any(String),
+                    weather_observed_time: expect.any(String),
+                });
+            });
+    });
+
+    it('should delete a mood record by id', () => {
+        return request(app)
+            .delete('/api/v1/moods/2')
             .then((res) => {
                 expect(res.body).toEqual({
                     id: '2',
