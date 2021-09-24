@@ -123,7 +123,7 @@ describe('mood + weather tracking routes', () => {
                     id: '2',
                     mood: 'upset',
                     mood_explanation:
-                        'It is wednesday, it is sunny, I am in lab wishing I could get unstuck',
+                        'It is wednesday, sunny, and I am in lab wishing I could get unstuck',
                     current_temperature: expect.any(Number),
                     air_quality: expect.any(Number),
                     weather_description: expect.any(String),
