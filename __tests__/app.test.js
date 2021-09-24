@@ -27,4 +27,18 @@ describe('mood + weather tracking routes', () => {
                 });
             });
     });
+    it('POSTS mood and current weather to the db', () => {
+        return request(app)
+            .get('/api/v1/moods/weather/97203')
+            .post('/api/v1/moods')
+            .send({
+                mood: 'happy',
+                reason: 'It is friday, it is sunny, my project is going well',
+            })
+            .then((res) => {
+                expect(res.body).toEqual({
+                    id: '1',
+                });
+            });
+    });
 });

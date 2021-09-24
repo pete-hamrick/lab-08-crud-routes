@@ -7,5 +7,5 @@ CREATE TABLE moods (
     temperature INTEGER NOT NULL,
     air_quality INTEGER NOT NULL,
     description VARCHAR(512) NOT NULL,
-    observed_time VARCHAR(512) NOT NULL
+    weather_observed_time VARCHAR(512) NOT NULL
 );
