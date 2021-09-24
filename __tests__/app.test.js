@@ -1,7 +1,10 @@
-const pool = require('../lib/utils/pool.js');
-const setup = require('../data/setup.js');
-const request = require('supertest');
-const app = require('../lib/app.js');
+import pool from '../lib/utils/pool.js';
+import setup from '../data/setup.js';
+import request from 'supertest';
+import app from '../lib/app.js';
+// const setup = require('../data/setup.js');
+// const request = require('supertest');
+// const app = require('../lib/app.js');
 
 describe('mood + weather tracking routes', () => {
     beforeEach(() => {
@@ -14,8 +17,7 @@ describe('mood + weather tracking routes', () => {
 
     it('returns the current weather given a zipcode', () => {
         return request(app)
-            .get('/api/v1/moods/weather')
-            .send(97203)
+            .get('/api/v1/moods/weather/97203')
             .then((res) => {
                 expect(res.body).toEqual({
                     'current-temperature': expect.any(Number),
