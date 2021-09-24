@@ -84,4 +84,34 @@ describe('mood + weather tracking routes', () => {
                 });
             });
     });
+
+    it('gets all of the moods', () => {
+        return request(app)
+            .get('/api/v1/moods')
+            .then((res) => {
+                expect(res.body).toEqual(
+                    {
+                        id: '1',
+                        mood: 'frustrated',
+                        mood_explanation:
+                            'It is thursday, it is sunny, I am in class wishing I was playing disc golf',
+                        zipcode: 97203,
+                        current_temperature: expect.any(Number),
+                        air_quality: expect.any(Number),
+                        weather_description: expect.any(String),
+                        weather_observed_time: expect.any(String),
+                    },
+                    {
+                        id: '2',
+                        mood: 'mad',
+                        mood_explanation:
+                            'It is wednesday, it is sunny, I am in lab wishing I could get unstuck',
+                        current_temperature: expect.any(Number),
+                        air_quality: expect.any(Number),
+                        weather_description: expect.any(String),
+                        weather_observed_time: expect.any(String),
+                    }
+                );
+            });
+    });
 });
