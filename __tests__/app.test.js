@@ -20,10 +20,10 @@ describe('mood + weather tracking routes', () => {
             .get('/api/v1/moods/weather/97203')
             .then((res) => {
                 expect(res.body).toEqual({
-                    'current-temperature': expect.any(Number),
-                    'air-quality': expect.any(Number),
-                    'weather-description': expect.any(String),
-                    'observed-time': expect.any(String),
+                    current_temperature: expect.any(Number),
+                    air_quality: expect.any(Number),
+                    weather_description: expect.any(String),
+                    weather_observed_time: expect.any(String),
                 });
             });
     });
@@ -32,12 +32,20 @@ describe('mood + weather tracking routes', () => {
             .post('/api/v1/moods')
             .send({
                 mood: 'happy',
-                reason: 'It is friday, it is sunny, my project is going well',
+                mood_explanation:
+                    'It is friday, it is sunny, my project is going well',
                 zipcode: 97203,
             })
             .then((res) => {
                 expect(res.body).toEqual({
                     id: '1',
+                    mood: 'happy',
+                    mood_explanation:
+                        'It is friday, it is sunny, my project is going well',
+                    current_temperature: expect.any(Number),
+                    air_quality: expect.any(Number),
+                    weather_description: expect.any(String),
+                    weather_observed_time: expect.any(String),
                 });
             });
     });
