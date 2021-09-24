@@ -117,7 +117,11 @@ describe('mood + weather tracking routes', () => {
     it('should PATCH a mood by id', () => {
         return request(app)
             .patch('/api/v1/orders/2')
-            .send({ mood: 'upset' })
+            .send({
+                mood: 'upset',
+                mood_explanation:
+                    'It is wednesday, sunny, and I am in lab wishing I could get unstuck',
+            })
             .then((res) => {
                 expect(res.body).toEqual({
                     id: '2',
