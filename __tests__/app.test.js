@@ -12,10 +12,6 @@ describe('mood + weather tracking routes', () => {
     });
 
     beforeEach(() => {
-        console.log(process.env.WEATHERBIT_API_KEY[0]);
-    });
-
-    beforeEach(() => {
         return request(app).post('/api/v1/moods').send({
             mood: 'frustrated',
             mood_explanation:
