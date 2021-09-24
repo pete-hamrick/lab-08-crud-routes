@@ -28,12 +28,8 @@ describe('mood + weather tracking routes', () => {
         });
     });
 
-    beforeEach(() => {
-        return setup(pool);
-    });
-
     afterAll(() => {
-        pool.end();
+        return app.close;
     });
 
     it('returns the current weather given a zipcode', () => {
@@ -48,6 +44,7 @@ describe('mood + weather tracking routes', () => {
                 });
             });
     });
+
     it('POSTS mood and current weather to the db', () => {
         return request(app)
             .post('/api/v1/moods')
@@ -59,7 +56,7 @@ describe('mood + weather tracking routes', () => {
             })
             .then((res) => {
                 expect(res.body).toEqual({
-                    id: '1',
+                    id: '3',
                     mood: 'happy',
                     mood_explanation:
                         'It is friday, it is sunny, my project is going well',
@@ -70,6 +67,7 @@ describe('mood + weather tracking routes', () => {
                 });
             });
     });
+
     it('gets a mood by id', () => {
         return request(app)
             .get('/api/v1/moods/2')
