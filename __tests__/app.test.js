@@ -2,6 +2,7 @@ import pool from '../lib/utils/pool.js';
 import setup from '../data/setup.js';
 import request from 'supertest';
 import app from '../lib/app.js';
+// import { mockFetch } from '../lib/utils/__mocks__/weather.js';
 // const setup = require('../data/setup.js');
 // const request = require('supertest');
 // const app = require('../lib/app.js');
@@ -32,7 +33,7 @@ describe('mood + weather tracking routes', () => {
         return app.close;
     });
 
-    it('returns the current weather given a zipcode', () => {
+    xit('returns the current weather given a zipcode', () => {
         return request(app)
             .get('/api/v1/moods/weather/97203')
             .then((res) => {
