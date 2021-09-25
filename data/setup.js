@@ -1,4 +1,5 @@
 import { promises as fs } from 'fs';
+// const fs = require('fs').promises;
 
 export default (pool) => {
     return fs
